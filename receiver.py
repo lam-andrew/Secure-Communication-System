@@ -68,3 +68,4 @@ if verify_mac(mac_key, encoded_message, encoded_mac):
         print(decoded_message)
 else:
     print("MAC verification failed. Message integrity compromised.")
+# TEST
