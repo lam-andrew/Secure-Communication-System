@@ -4,7 +4,7 @@
 public class Demo {
     public static void main(String[] args) throws Exception {
         // Messages to be transmitted and received
-        String senderMessage = "Hello, world!";
+        String senderMessage = "This message was decrypted successfully! :)";
         String receiverMessage = null;
 
         // Create instances of Sender and Receiver
@@ -26,7 +26,7 @@ public class Demo {
         receiverMessage = receiver.getMessage();
 
         // Display the original and received messages
-        System.out.println("Sent message: " + senderMessage);
-        System.out.println("Received message: " + receiverMessage);
+        System.out.println("Sent message from the Sender: " + senderMessage);
+        System.out.println("Received message from the Receiver: " + receiverMessage);
     }
 }
