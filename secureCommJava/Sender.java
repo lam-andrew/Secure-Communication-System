@@ -36,8 +36,8 @@ public class Sender {
         senderPublicKey = keyPair.getPublic();
 
         // Save the keys to files
-        writeKeyToFile(senderPrivateKey, "sender.private.key");
-        writeKeyToFile(senderPublicKey, "sender.public.key");
+        writeKeyToFile(senderPrivateKey, "./secureCommJava/sender.private.key");
+        writeKeyToFile(senderPublicKey, "./secureCommJava/sender.public.key");
     }
 
     // Set the message to be transmitted
@@ -48,7 +48,7 @@ public class Sender {
     // Encrypt the message using AES and the receiver's public key
     public void encryptMessage() throws Exception {
         // Read the receiver's public key from file
-        readPublicKeyFromFile("receiver.public.key");
+        readPublicKeyFromFile("./secureCommJava/receiver.public.key");
 
         // Generate a random AES key
         SecretKey aesKey = generateAESKey();
@@ -63,7 +63,7 @@ public class Sender {
 
     // Send the encrypted components to a file
     public void sendMessage() throws Exception {
-        try (FileOutputStream transmittedDataFile = new FileOutputStream("Transmitted_Data")) {
+        try (FileOutputStream transmittedDataFile = new FileOutputStream("./secureCommJava/Transmitted_Data")) {
             writeDataToFile(transmittedDataFile, encryptedMessage);
             writeDataToFile(transmittedDataFile, encryptedKey);
             writeDataToFile(transmittedDataFile, macBytes);

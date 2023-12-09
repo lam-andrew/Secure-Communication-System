@@ -30,18 +30,18 @@ public class Receiver {
         receiverPublicKey = keyPair.getPublic();
 
         // Save receiver's key pair to files
-        try (FileOutputStream receiverPrivateKeyFile = new FileOutputStream("receiver.private.key")) {
+        try (FileOutputStream receiverPrivateKeyFile = new FileOutputStream("./secureCommJava/receiver.private.key")) {
             receiverPrivateKeyFile.write(Base64.getEncoder().encode(receiverPrivateKey.getEncoded()));
         }
 
-        try (FileOutputStream receiverPublicKeyFile = new FileOutputStream("receiver.public.key")) {
+        try (FileOutputStream receiverPublicKeyFile = new FileOutputStream("./secureCommJava/receiver.public.key")) {
             receiverPublicKeyFile.write(Base64.getEncoder().encode(receiverPublicKey.getEncoded()));
         }
     }
 
     // Method to receive encrypted components from a file
     public void receiveMessage() throws Exception {
-        try (BufferedReader br = new BufferedReader(new FileReader("Transmitted_Data"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("./secureCommJava/Transmitted_Data"))) {
             encryptedMessage = Base64.getDecoder().decode(br.readLine());
             encryptedKey = Base64.getDecoder().decode(br.readLine());
             macBytes = Base64.getDecoder().decode(br.readLine());
@@ -51,7 +51,7 @@ public class Receiver {
     // Method to decrypt the received message
     public void decryptMessage() throws Exception {
         // Read sender's public key from file
-        try (FileInputStream senderPublicKeyFile = new FileInputStream("sender.public.key")) {
+        try (FileInputStream senderPublicKeyFile = new FileInputStream("./secureCommJava/sender.public.key")) {
             byte[] senderPublicKeyBytes = new byte[senderPublicKeyFile.available()];
             senderPublicKeyFile.read(senderPublicKeyBytes);
 
